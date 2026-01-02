@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>PPTX → Word</title>
+    <link rel="stylesheet" href="/static/styles.css">
+
+</head>
+<body>
+    <h1>Convertir PPTX a Word</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="pptx_files" multiple accept=".pptx">
+        <button type="submit">Convertir</button>
+    </form>
+
+    {% if files %}
+    <h2>Archivos convertidos:</h2>
+    <ul>
+        {% for file in files %}
+        <li><a href="{{ url_for('download_file', filename=file) }}">{{ file }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
